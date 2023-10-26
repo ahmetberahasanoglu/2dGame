@@ -234,8 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: d98f3d5834976fc49800569236e06883, type: 2}
+  hasarX: 3
   deathKick: {x: 5, y: 4}
-  hasarKick: {x: 0, y: 10}
+  hasarKick: {x: 0, y: 13}
   ates: {fileID: 4195837899957414298, guid: 1bce8998bb9b2fe448dd1494789799e0, type: 3}
   atesChild: {fileID: 6607907282728204449}
   _groundLayer:
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc3422e37a707944aa9cd8bb6af6fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 2
   attacking: 0
 --- !u!114 &2214275626644175798
 MonoBehaviour:
@@ -362,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f46c33c8fd291b4c8eb3a9b6668481e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: d98f3d5834976fc49800569236e06883, type: 2}
 --- !u!1 &6618940664329349228
 GameObject:
   m_ObjectHideFlags: 0

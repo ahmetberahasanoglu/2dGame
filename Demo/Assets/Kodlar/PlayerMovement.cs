@@ -6,22 +6,23 @@ public class PlayerMovement : MonoBehaviour
 {
     public PlayerData Data;
     PlayerAttack atak;
+    
 
-    #region Variables
+    #region Degiskenler
     public Rigidbody2D RB { get; private set; }
     public bool IsFacingRight { get; private set; }
     public bool IsJumping { get; private set; }
 
     public float LastOnGroundTime { get; private set; }
-
+    
 
     //Jump
-    private bool _isJumpCut;
+    
     private bool _isJumpFalling;
 
     private bool isRunning;
 
-
+    [SerializeField] float hasarX=2f;
     [SerializeField] Vector2 deathKick = new Vector2(5f, 4f);
     [SerializeField] Vector2 hasarKick = new Vector2(0, 4f);
     private Vector2 _moveInput;
@@ -56,10 +57,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        if(RB.velocity.y>50)
-        {
-            SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
-        }
+        
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
         LastPressedJumpTime -= Time.deltaTime;
@@ -93,10 +91,7 @@ public class PlayerMovement : MonoBehaviour
             OnJumpInput();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            OnJumpUpInput();
-        }
+       
         #endregion
 
      
@@ -122,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (LastOnGroundTime > 0 && !IsJumping)
         {
-            _isJumpCut = false;
+            
 
             if (!IsJumping)
                 _isJumpFalling = false;
@@ -132,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         if (CanJump() && LastPressedJumpTime > 0)
         {
             IsJumping = true;
-            _isJumpCut = false;
+            
             _isJumpFalling = false;
             Jump();
         }
@@ -147,12 +142,7 @@ public class PlayerMovement : MonoBehaviour
             //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
             RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
         }
-        else if (_isJumpCut)
-        {
-            //Higher gravity if jump button released
-            SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
-            RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-        }
+      
         else if ((IsJumping || _isJumpFalling) && Mathf.Abs(RB.velocity.y) < Data.jumpHangTimeThreshold)
         {
             SetGravityScale(Data.gravityScale * Data.jumpHangGravityMult);
@@ -188,11 +178,7 @@ public class PlayerMovement : MonoBehaviour
         LastPressedJumpTime = Data.jumpInputBufferTime;
     }
 
-    public void OnJumpUpInput()
-    {
-        if (CanJumpCut())
-            _isJumpCut = true;
-    }
+   
     #endregion
 
     #region GENERAL METHODS
@@ -206,9 +192,8 @@ public class PlayerMovement : MonoBehaviour
     #region RUN METHODS
     private void Run(float lerpAmount)//koþma
     {
-        //Calculate the direction we want to move in and our desired velocity
         float targetSpeed = _moveInput.x * Data.runMaxSpeed;
-        //We can reduce are control using Lerp() this smooths changes to are direction and speed
+
         targetSpeed = Mathf.Lerp(RB.velocity.x, targetSpeed, lerpAmount);
 
         #region Calculate AccelRate
@@ -237,10 +222,16 @@ public class PlayerMovement : MonoBehaviour
 
         float movement = speedDif * accelRate;
 
-        //Convert this to a vector and apply to rigidbody
         if (atak.attacking == false)
         {
+            //Calculate the direction we want to move in and our desired velocity
+          
             RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
+        }
+        else
+        {
+            
+            movement = 0;
         }
     }
 
@@ -294,10 +285,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private bool CanJumpCut()
-    {
-        return IsJumping && RB.velocity.y > 0;
-    }
+    
 
      void Ates()
     {
@@ -309,6 +297,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void DamageTepki()
     {
+        hasarKick.x = -transform.localScale.x * hasarX;
+        
         RB.velocity = hasarKick;
     }
     void Die()

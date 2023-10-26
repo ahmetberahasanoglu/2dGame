@@ -36,6 +36,8 @@ public class Health : MonoBehaviour
         if (bCollision.tag == "Player" && hasarAlindi==true)
         {
             timerBasla=true;
+            FindObjectOfType<GameSession>().TakeLife();
+
             //timer baslat
             collision.enabled = false;//Daha iyi bir çözüm bul!! collider'ý kapatmak yerine damage Fonksiyonunu iþlevsiz hale getir
 

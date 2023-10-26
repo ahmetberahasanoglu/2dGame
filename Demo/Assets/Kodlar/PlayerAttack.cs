@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private GameObject attackArea = default;
     public int damage=2;
     public bool attacking = false;
-    private float timeToAttack = 0.25f;
+    private float timeToAttack = 0.35f;
     private float timer = 0f;
     Animator saldýrý;
     void Start()

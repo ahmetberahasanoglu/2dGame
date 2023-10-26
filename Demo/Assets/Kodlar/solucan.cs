@@ -27,32 +27,39 @@ public class solucan : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*
-         * if (myBCollider.IsTouchingLayers(LayerMask.GetMask("platform")))
+        if (collision.gameObject.tag == "Player")
         {
-            myAnim.SetBool("isJumping", false);
-            LastOnGroundTime = Data.coyoteTime;
-        }*/
-        if (collision.tag == "Player")
-        {
-            karakterH = collision.GetComponent<Health>();
+            karakterH = collision.gameObject.GetComponent<Health>();
             karakterH.Damage(alinanHasar);
+            FindObjectOfType<PlayerMovement>().DamageTepki();
+            düsmanHiz = -düsmanHiz;
+            dondur() ;
         }
-
-
     }
-    /*  void asis()
+    /*private void OnTriggerEnter2D(Collider2D collision)
+   {
+
+        * if (myBCollider.IsTouchingLayers(LayerMask.GetMask("platform")))
+       {
+           myAnim.SetBool("isJumping", false);
+           LastOnGroundTime = Data.coyoteTime;
+       }
+}*/
+
+
+
+/*  void asis()
+  {
+      if (capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
       {
-          if (capsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-          {
 
 
-          }
-      }*/
+      }
+  }*/
 
-        void Run()
+    void Run()
     {
         düsmanRigid.velocity = new Vector2(düsmanHiz, 0f);
     }
@@ -62,5 +69,7 @@ public class solucan : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
+    
 }
+
 
