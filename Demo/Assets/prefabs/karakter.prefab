@@ -236,7 +236,7 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: d98f3d5834976fc49800569236e06883, type: 2}
   hasarX: 3
   deathKick: {x: 5, y: 4}
-  hasarKick: {x: 0, y: 13}
+  hasarKick: {x: 0, y: 10}
   ates: {fileID: 4195837899957414298, guid: 1bce8998bb9b2fe448dd1494789799e0, type: 3}
   atesChild: {fileID: 6607907282728204449}
   _groundLayer:

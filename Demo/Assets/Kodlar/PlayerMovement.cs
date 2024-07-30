@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public PlayerData Data;
     PlayerAttack atak;
-    
+   
+
 
     #region Degiskenler
     public Rigidbody2D RB { get; private set; }

@@ -10,11 +10,11 @@ EditorBuildSettings:
     guid: d91bd2560f17aea4fb04b08d72c29d47
   - enabled: 1
     path: Assets/Scenes/Sahne1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 2712c8379954c014c94ed81cdf45d063
   - enabled: 1
     path: Assets/Scenes/Sahne2.unity
-    guid: d4ebe12bc333b2046adc6f2a5cb7aba4
+    guid: b64cb88826d03a847b4acbf6ed459472
   - enabled: 1
     path: Assets/Scenes/Sahne3.unity
-    guid: 2712c8379954c014c94ed81cdf45d063
+    guid: 95211847d5048bf4a800fc2de097b65b
   m_configObjects: {}

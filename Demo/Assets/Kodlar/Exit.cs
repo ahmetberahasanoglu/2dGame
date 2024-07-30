@@ -7,8 +7,8 @@ public class Exit : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float loadDelay = 1f;
 
-    public GameObject GameSessionObject;
-    public GameObject ScenePersistObject;
+  //  public GameObject GameSessionObject;
+  //  public GameObject ScenePersistObject;
     private void OnTriggerEnter2D(Collider2D collision)
     {
        if(collision.tag== "Player")
@@ -16,10 +16,7 @@ public class Exit : MonoBehaviour
             StartCoroutine(LoadNextLevel());
         }
    
-            
-       
-        
-
+      
     }
     IEnumerator LoadNextLevel()
     {
@@ -27,8 +24,8 @@ public class Exit : MonoBehaviour
         int sonrakiSahne = SceneManager.GetActiveScene().buildIndex + 1;
         if (sonrakiSahne == SceneManager.sceneCountInBuildSettings)
         {
-            Destroy(GameSessionObject.gameObject);
-            Destroy(ScenePersistObject.gameObject);
+         //   Destroy(GameSessionObject.gameObject);
+       //     Destroy(ScenePersistObject.gameObject);
             sonrakiSahne = 0;//eger son bolumu gecersek ilk bolume atacak bunu son bolumu gecersek ara sahne gelsin þeklinde yapabilirz
             // ya da son bölümü geçersek gamesession ve scenemanager'I silerek ana menuye atacak -> düzenleem ben GOATIM 
         }

@@ -33,6 +33,15 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;//zamanýn akýþ hýzý normale döndü
         GameIsPaused = false;
     }
+    public void Reset()
+    {
+        GameIsPaused = false;
+        var a = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(a);
+        Time.timeScale = 1f;
+        Destroy(ScenePersistObject.gameObject);
+        Destroy(GameSessionObject.gameObject);
+    }
     void oyunuDurdur()
     {
         pauseMenu.SetActive(true);

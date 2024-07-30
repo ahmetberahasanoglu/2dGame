@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -11,13 +12,15 @@ public class Health : MonoBehaviour
     bool hasarAlindi = false;
     float timer;
     [SerializeField] float olumsuzSure=0.8f;
-    bool timerBasla = false;
+   // bool timerBasla = false; BU OLACAK!!!
     // private int maxHp = 100;
     CapsuleCollider2D collision;
     BoxCollider2D bCollision;
+    
 
     void Awake()
     {
+
         collision = GetComponent<CapsuleCollider2D>();
         bCollision = GetComponent<BoxCollider2D>();
        // gameSession = GetComponent<GameSession>();
@@ -35,11 +38,11 @@ public class Health : MonoBehaviour
         }
         if (bCollision.tag == "Player" && hasarAlindi==true)
         {
-            timerBasla=true;
+            //  timerBasla=true;   BU OLACAK!!!
             FindObjectOfType<GameSession>().TakeLife();
 
-            //timer baslat
-            collision.enabled = false;//Daha iyi bir çözüm bul!! collider'ý kapatmak yerine damage Fonksiyonunu iþlevsiz hale getir
+            
+          //  collision.enabled = false;//Daha iyi bir çözüm bul!! collider'ý kapatmak yerine damage Fonksiyonunu iþlevsiz hale getir
 
             //karakter 10 salise olumsuz olsun
             if (timer == olumsuzSure)
@@ -47,7 +50,7 @@ public class Health : MonoBehaviour
                 collision.enabled = true;
                 //Buraya animasyon ekle(karakteri kýrmýzý/beyaz yap)
                 hasarAlindi = false;
-                timerBasla = false;
+                //  timerBasla = false;    BU OLACAK!!!
                 timer = 0;
             }
             
@@ -64,21 +67,22 @@ public class Health : MonoBehaviour
     }
     public void Update()
     {
-        if(timerBasla==true)
-        {
-            timer += Time.deltaTime;
-            //Debug.Log(timer);
-           /* if(timer > olumsuzSure)
-            {
-                timer = 0;
-            }*/
-        }
-        else
-        {
-            timer = 0;
-        }
-       
-       
+        
+        /* if(timerBasla==true)
+         {
+             timer += Time.deltaTime;
+             //Debug.Log(timer);
+            /* if(timer > olumsuzSure)
+             {
+                 timer = 0;
+             }
+         }
+         else BURAYI DUZELT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         {
+             timer = 0;
+         }
+        */
+
         if (Can <= 0)
         {
             Can = 0;
@@ -111,7 +115,6 @@ public class Health : MonoBehaviour
         if(collision.tag == "Player")
         {
             isAlive = false;
-            Debug.Log("OLDUM");
         }
         else
         {

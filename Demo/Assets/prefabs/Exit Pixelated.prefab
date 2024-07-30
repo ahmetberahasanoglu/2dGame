@@ -99,8 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadDelay: 0.1
-  GameSessionObject: {fileID: 0}
-  ScenePersistObject: {fileID: 0}
 --- !u!61 &4072042643287245749
 BoxCollider2D:
   m_ObjectHideFlags: 0
